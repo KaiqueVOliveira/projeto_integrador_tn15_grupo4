@@ -2,12 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap');
 
 
-*{
+* {
   Margin:0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Libre Baskerville', serif;
-  </style>;
   color: #323232;
   border: none;
 }
