@@ -1,0 +1,40 @@
+<%- include('./partials/header') %>
+<script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|s)no-js(s|$)/,"$1js$2")})(document,window,0);</script>
+
+<h1 class="d-flex justify-content-center">Cadastro de Produtos</h1>
+  <main class="d-flex justify-content-center">
+    
+
+    <form action='' method='POST' enctype="multipart/form-data">
+      <div>
+        <label for="name">Nome do produto:</label>
+        <input name="name" id="name" type="text">
+      </div>
+      <div>
+        <label for="price">Preço do produto:</label>
+        <input name="price" id="price" type="number">
+      </div>
+      <div>
+        <div>
+          <label>Tipo de produto:</label>
+        </div>
+        <% types.forEach(function(type) {%>
+          <div class='form-check-inline'>
+            <input type='radio' name='type' id='<%= type.id %>' class='form-check-input' value='<%= type.id %>' />
+            <label for="<%= type.id %>" class='form-check-label'><%= type.label %></label>
+          </div>
+        <% }) %>   
+      </div>
+        <div>
+            <label class='procurar-imagem-label' for='file'>Imagem do produto:</label><br>
+            <input type='file' name='imgProduto' id='file' class='procurar-imagem'>
+            
+        </div> 
+      <div class='botoes-cancel-submit'>
+        <input type="submit" value="Cadastrar produto">
+        <input type="reset" value="Cancelar">
+      </div>
+    </form>
+  </main>
+</body>
+<%- include('./partials/footer') %>

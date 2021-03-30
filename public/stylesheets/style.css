@@ -1,8 +1,83 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+header {
+  border-bottom: 1px solid #bb91f3;
+  background-color: #323639;
 }
 
-a {
-  color: #00B7FF;
+header a {
+  border-bottom: 2px solid transparent;
+  color: #fbf9ff;
+  display: inline-block;
+  text-decoration: none;
+  padding: 24px 16px;
+  font-size: 16px;
+  border-left: solid 2px #c5a0f7;
+  font-family: sans-serif;
 }
+
+header a:hover {
+  border-bottom: 2px solid #f4989c;
+}
+
+.container-fluid {
+  display: flex;
+}
+
+.img-thumbnail {
+  width: 20%;
+  height: 20%;
+  flex: start;
+  align-self: flex-start;
+}
+
+#search-button {
+  border-color: #f4989c;
+  color: #cc2a32;
+  border-radius: 20%;  
+}
+
+#search-button:hover {
+  text-decoration: none;
+  background-color: rgba(238, 149, 154, 0.5);
+  border-color: #f1656c;
+}
+
+p {
+  padding: 0.5rem;
+}
+form div {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.botoes-cancel-submit input {
+  text-decoration: none;
+  border-color: #f4989c;
+  color: #cc2a32;
+  border-radius: 20%;  
+}
+
+.botoes-cancel-submit input:hover {
+  text-decoration: none;
+  background-color: rgba(238, 149, 154, 0.5);;
+  border-color: #f1656c;
+}
+
+.procurar-imagem {
+  text-decoration: none;
+  border-color: #f4989c;
+  color: #140f0f;
+  
+}
+/*img {
+  width: 100%;
+  height: 100%
+}*/
+
+/* header div {
+  display: inline-block; */
+/* } */
+
+/* header a:hover{
+  background-color: blue; */
+
+/* }fica azul na hora que passa o mouse */
