@@ -22,8 +22,14 @@ let productsController = {
     },
 
     viewAttForm: (req,res) => {
-        let {id} = req.params;
-        res.render('editarProdutos', {banco: banco[id]});
+        let id = req.params.id;
+        const product = banco.find(function(product){
+           if ( parseInt(id) === product.id){
+            return product
+           }
+           
+        })
+        res.render('products/edit', {banco: banco[id], types: types, product: product});
     },
 
     editar: (req,res) => {
@@ -32,7 +38,7 @@ let productsController = {
     },
 
     listarProdutos: (req,res) => {
-        res.render('/products/list', {listaProdutos: banco})
+        res.render('products/list', {listaProdutos: banco})
     },
 
     deletarProduto: (req,res) => {
@@ -41,7 +47,7 @@ let productsController = {
             return registro.id !== parseInt(req.params.id);
         });
 
-        res.render('/products/list', {listaProdutos: banco});
+        res.render('products/list', {listaProdutos: banco});
     }
 }
 

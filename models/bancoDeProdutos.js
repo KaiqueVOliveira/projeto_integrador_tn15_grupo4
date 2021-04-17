@@ -1,13 +1,13 @@
 var bancoDeProdutos = [
     {
         id: 1,
-        type: 'maquiagem',
+        type: 'makeup',
         name: 'base',
         price: '30'
     },
     {
         id: 2,
-        type: 'esmalte',
+        type: 'glaze',
         name:'esmalte vermelho',
         price: '20'
     },
