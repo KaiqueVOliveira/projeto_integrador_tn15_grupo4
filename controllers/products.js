@@ -32,7 +32,7 @@ let productsController = {
     },
 
     listarProdutos: (req,res) => {
-        res.render('/products/list', {listaProdutos: banco})
+        res.render('products/list', {listaProdutos: banco})
     },
 
     deletarProduto: (req,res) => {
@@ -41,7 +41,7 @@ let productsController = {
             return registro.id !== parseInt(req.params.id);
         });
 
-        res.render('/products/list', {listaProdutos: banco});
+        res.render('products/list', {listaProdutos: banco});
     }
 }
 
