@@ -7,7 +7,7 @@ const path = require('path')
 let productsController = {
 
     viewForm: (req, res) => {
-        return res.render('registerProducts', {banco: banco, types: types});
+        return res.render('products/register', {banco: banco, types: types});
     },
     
     salvarForm: (req, res) => {
@@ -18,7 +18,7 @@ let productsController = {
         banco.push(req.body)
         console.log(banco)
         
-        return res.render('registerProducts',{banco: banco, types: types})
+        return res.render('products/register',{banco: banco, types: types})
     },
 
     viewAttForm: (req,res) => {
@@ -32,7 +32,7 @@ let productsController = {
     },
 
     listarProdutos: (req,res) => {
-        res.render('listaProdutos', {listaProdutos: banco})
+        res.render('/products/list', {listaProdutos: banco})
     },
 
     deletarProduto: (req,res) => {
@@ -41,7 +41,7 @@ let productsController = {
             return registro.id !== parseInt(req.params.id);
         });
 
-        res.render('listaProdutos', {listaProdutos: banco});
+        res.render('/products/list', {listaProdutos: banco});
     }
 }
 
