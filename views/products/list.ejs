@@ -1,2 +1,33 @@
 <%- include('../partials/header') %>
+<tbody>
+    <% products.forEach(function(product) { %>
+    <tr>
+      <th scope="row"><%- product.id %></th>
+      <td><%- product.name %></td>
+      <td><%- product.document %></td>
+      <td><%- product.crm %></td>
+      <td>
+        <div class="row">
+          <div class="col-md-3">
+            <a
+              role="button"
+              href="/products/edit/<%-product.id%>"
+              class="btn btn-warning"
+            >
+              Editar
+            </a>
+          </div>
+          <div class="col-md-3">
+            <form method="POST" action="/doctor?_method=DELETE">
+              <input type="text" hidden name="id" value="<%-doctor.id%>" />
+              <button type="submit" class="btn btn-danger">
+                Excluir
+              </button>
+            </form>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <% });%>
+  </tbody>
 <%- include('../partials/footer') %>

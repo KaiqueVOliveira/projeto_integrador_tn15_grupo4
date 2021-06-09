@@ -2,23 +2,37 @@ let banco = require('../models/bancoDeProdutos');
 const types = require('../models/types');
 const fs = require('fs')
 const path = require('path')
-
+const config = require('../config/database');
+const Sequelize = require('sequelize');
+const db = new Sequelize(config);
 
 let productsController = {
 
-    viewForm: (req, res) => {
-        return res.render('products/register', {banco: banco, types: types});
+    viewForm: async(req, res) => {
+        let result = await db.query('select * from products', {type: Sequelize.QueryTypes.SELECT})
+        console.log(result)
     },
     
-    salvarForm: (req, res) => {
-        let {name, price, type, id, imgProduto} = req.body
-        let{files} = req
-        console.log(req.body)
+    salvarForm: async (req, res) => {
+        let {name, price, type} = req.body
+        //let{files} = req
+        console.log(req)
+        let result = await db.query('insert into products (name, price, type) values (:name, :price, :type)',{
+            replacements: {
+                name: name,
+                price: price,
+                type: type
+            }
+        })
+        
+
+          
+        /*console.log(req.body)
         req.body.id = parseInt(Math.random() * 1000)
         banco.push(req.body)
-        console.log(banco)
+        console.log(banco)*/
         
-        return res.render('products/register',{banco: banco, types: types})
+        res.render('products/register',{banco: banco, types: types})
     },
 
     viewAttForm: (req,res) => {

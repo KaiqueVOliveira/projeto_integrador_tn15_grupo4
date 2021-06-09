@@ -1,10 +1,10 @@
 var express = require('express');
-var authModel = require('../models/auth');
+var authModel = require('../models/login');
 var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-  res.render('auth');
+  res.render('login');
 });
 
 router.post('/', async function(req,res){
@@ -13,7 +13,7 @@ router.post('/', async function(req,res){
     const user = await authModel.getUser(req.body);
     if(user !== undefined && user.password === req.body.password){
         console.log('Login realizado com sucesso');
-        res.render('auth')
+        res.render('login')
     } else{
         res.locals.message = 'Erro ao realizar login';
         res.locals.error = req.app.get('env') === 'development' ? 'erro ao realizar login' : {};
