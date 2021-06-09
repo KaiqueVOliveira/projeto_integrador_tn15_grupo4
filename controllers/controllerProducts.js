@@ -9,8 +9,10 @@ const db = new Sequelize(config);
 let productsController = {
 
     viewForm: async(req, res) => {
-        let result = await db.query('select * from products', {type: Sequelize.QueryTypes.SELECT})
-        console.log(result)
+        let types = await db.query('select * from types', {type: Sequelize.QueryTypes.SELECT})
+        
+        return res.render('products/register',{types:types});
+        
     },
     
     salvarForm: async (req, res) => {
