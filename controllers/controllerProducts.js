@@ -1,4 +1,3 @@
-let banco = require('../models/bancoDeProdutos');
 const types = require('../models/types');
 const fs = require('fs')
 const path = require('path')
@@ -16,10 +15,11 @@ let productsController = {
     },
     
     salvarForm: async (req, res) => {
-        let {name, price, type} = req.body
-        //let{files} = req
-        console.log(req)
-        let result = await db.query('insert into products (name, price, type) values (:name, :price, :type)',{
+        let {name, price, type, imgProduto} = req.body;
+        const image = req.file
+        
+        //console.log(req)
+        await db.query('insert into products (name, price, type) values (:name, :price, :type)',{
             replacements: {
                 name: name,
                 price: price,
@@ -34,7 +34,7 @@ let productsController = {
         banco.push(req.body)
         console.log(banco)*/
         
-        res.render('products/register',{banco: banco, types: types})
+        res.render('products/register',{types: types})
     },
 
     viewAttForm: (req,res) => {
@@ -53,8 +53,9 @@ let productsController = {
         res.send('Você editou o produto ' + name)
     },
 
-    listarProdutos: (req,res) => {
-        res.render('products/list', {listaProdutos: banco})
+    listarProdutos: async (req,res) => {
+        const result = await db.query("select * from products;", { type: Sequelize.QueryTypes.SELECT });
+            console.log(result);        res.render('products/list', {products:result})
     },
 
     deletarProduto: (req,res) => {
