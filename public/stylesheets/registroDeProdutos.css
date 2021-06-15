@@ -7,7 +7,6 @@ header a {
   border-bottom: 2px solid transparent;
   color: #fbf9ff;
   display: inline-block;
-  text-decoration: none;
   padding: 24px 16px;
   font-size: 16px;
   border-left: solid 2px #c5a0f7;
@@ -20,13 +19,6 @@ header a:hover {
 
 .container-fluid {
   display: flex;
-}
-
-.img-thumbnail {
-  width: 20%;
-  height: 20%;
-  flex: start;
-  align-self: flex-start;
 }
 
 #search-button {

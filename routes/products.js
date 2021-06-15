@@ -20,10 +20,10 @@ var upload = multer({storage: storage})
 
 /* GET home page. */
 router.get('/', productsController.viewForm);
-router.post('/', upload.single('imgProduto'), productsController.salvarForm);
-router.get('/:id/editar', productsController.viewAttForm);
-router.put('/editar', productsController.editar);
-router.get('/lista', productsController.listarProdutos);
+router.post('/', upload.single('productImg'), productsController.salvarForm);
+router.get('/edit/:id', productsController.getProductById);
+router.put('/edit/:id', productsController.edit);
+router.get('/list', productsController.listarProdutos);
 router.delete('/deletar/:id', productsController.deletarProduto);
 
 module.exports = router;

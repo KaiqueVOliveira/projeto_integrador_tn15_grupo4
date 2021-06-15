@@ -25,11 +25,19 @@
           </div>
         <% }) %>   
       </div>
-        <div>
-            <label class='procurar-imagem-label' for='file'>Imagem do produto:</label><br>
-            <input type='file' name='imgProduto' id='imgProduto' class='procurar-imagem'>
+      <div>
+        <label for="description">Descrição do produto</label>
+        <textarea
+          type="textarea"
+          id="description"
+          name="description"
+          class="form-control"></textarea>
+      </div>
+      <div>
+        <label class='procurar-imagem-label' for='file'>Imagem do produto:</label><br>
+        <input type='file' name='productImg' id='productImg' class='procurar-imagem'>
             
-        </div> 
+      </div> 
       <div class='botoes-cancel-submit'>
         <input type="submit" value="Cadastrar produto">
         <input type="reset" value="Cancelar">

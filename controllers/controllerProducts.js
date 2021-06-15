@@ -1,29 +1,34 @@
-const types = require('../models/types');
+const typesModel = require('../models/types')
+const productsModel = require('../models/products')
 const fs = require('fs')
 const path = require('path')
 const config = require('../config/database');
 const Sequelize = require('sequelize');
 const db = new Sequelize(config);
 
+
 let productsController = {
 
     viewForm: async(req, res) => {
-        let types = await db.query('select * from types', {type: Sequelize.QueryTypes.SELECT})
-        
+        const types = await typesModel.getTypes();
+
         return res.render('products/register',{types:types});
         
     },
     
     salvarForm: async (req, res) => {
-        let {name, price, type, imgProduto} = req.body;
-        const image = req.file
+        const types = await typesModel.getTypes();
+        let {name, price, type, description} = req.body;
+        let {files} = req
         
-        //console.log(req)
-        await db.query('insert into products (name, price, type) values (:name, :price, :type)',{
+        console.log(req)
+        await db.query('insert into products (name, price, type, img, description) values (:name, :price, :type, :img, :description)',{
             replacements: {
                 name: name,
                 price: price,
-                type: type
+                type: type,
+                img: req.file.filename,
+                description: description
             }
         })
         
@@ -37,25 +42,26 @@ let productsController = {
         res.render('products/register',{types: types})
     },
 
-    viewAttForm: (req,res) => {
+    getProductById:  async (req,res) => {
+        const types = await typesModel.getTypes();
         let id = req.params.id;
-        const product = banco.find(function(product){
-           if ( parseInt(id) === product.id){
-            return product
-           }
-           
-        })
-        res.render('products/edit', {banco: banco[id], types: types, product: product});
+        const product = await productsModel.getById(id)
+        res.render('products/edit',{types: types, product: product});
     },
 
-    editar: (req,res) => {
-        let {name, price, type} = req.body
-        res.send('Você editou o produto ' + name)
+    edit: async (req,res) => {
+        let productPut = req.body
+        console.log(productPut)
+        let {files} = req
+        const types = await typesModel.getTypes();
+        const product = await productsModel.updateProduct(productPut)
+        res.redirect('products/list',{types: types, product: product})
     },
 
     listarProdutos: async (req,res) => {
         const result = await db.query("select * from products;", { type: Sequelize.QueryTypes.SELECT });
-            console.log(result);        res.render('products/list', {products:result})
+            console.log(result);        
+            res.render('products/list', {products:result})
     },
 
     deletarProduto: (req,res) => {

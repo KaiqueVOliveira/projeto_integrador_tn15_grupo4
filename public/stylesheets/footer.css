@@ -1,0 +1,81 @@
+footer{
+    box-sizing: border-box;
+    margin-top: 1em;
+}
+footer .telephones .telemarketing .whats-attendance .stores-attendance {
+    
+    padding: 16px 0;
+}
+footer .telephones p{
+    font: bolder;
+    margin-bottom: -0.2em;
+    font-size: 1em;
+
+}
+.telephones li p{
+    font:bolder 10%;
+    color: #cc2a32;
+    /*padding: 0%;*/
+    text-transform: uppercase;
+}
+.telephones{
+    width:100%;
+    background: #EDEDED;
+}
+.row{
+    width: 100%;
+    margin: 0 auto;
+}
+.row li{
+    float:left;
+    width: 30%;
+    vertical-align: top;
+    margin: 0 1.5%;
+    list-style-type: none;
+    text-align: center;
+    border-bottom: 1px solid #bb91f3;
+    border-left: solid 2px #c5a0f7;
+}
+.upper-case{
+    text-transform: uppercase;
+    color: #cc2a32;
+
+}
+.general{
+    width:100%;
+    background: #c5a0f7;
+}
+.general-row1 ul{
+    list-style-type: none;
+    float:left;
+    width: 30%;
+    padding: 5px 0;
+    padding-left: 4.2%;
+    margin: 0 1.5%;
+    text-align: left;
+    border-left: solid 2px #c5a0f7; 
+}
+.general-row2 ul{
+    list-style-type: none;
+    float:left;
+    width: 30%;
+    padding: 5px 0;
+    padding-left: 6.8%;
+    margin: 0 1.5%;
+    text-align: left;
+    border-left: solid 2px #c5a0f7;
+}
+.general-row3 ul{
+    list-style-type: none;
+    float:left;
+    width: 30%;
+    padding: 5px 0;
+    padding-left: 3.1%;
+    margin: 0 1.5%;
+    text-align: left;
+    border-left: solid 2px #c5a0f7;
+}
+
+
+
+

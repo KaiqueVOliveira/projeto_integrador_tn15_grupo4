@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 <section class="container">
     <h1>Editar produto</h1>
-    <form action='' method='POST' enctype="multipart/form-data">
+    <form action="/products/edit/<%=product.id%>?_method=PUT" method='post' enctype="multipart/form-data">
         <div>
           <label for="name">Nome do produto:</label>
           <input value="<%= product.name %>" name="name" id="name" type="text">
@@ -16,14 +16,11 @@
           </div>
           <% types.forEach(function(type) {%>
             <div class='form-check-inline'>
-                
-                <% if(type.id==product.type) {%>
-                    <input type='radio' name='type' id='<%= type.id %>' class='form-check-input' value='<%= type.id %>' checked/>
-                    <% } else { %>                    
-                        <input type='radio' name='type' id='<%= type.id %>' class='form-check-input' value='<%= type.id %>'/>
-                    <% } %>          
-                     <label for="<%= type.id %>" class='form-check-label'><%= type.label %></label> 
-                          </div>
+                                
+              <input type='radio' name='type' id='<%= type.id %>' class='form-check-input' value='<%= type.id %>' checked/>
+                                   
+              <label for="<%= type.id %>" class='form-check-label'><%= type.label %></label> 
+                    </div>
           <% }) %>   
         </div>
           <div>
@@ -38,20 +35,6 @@
       </form>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
