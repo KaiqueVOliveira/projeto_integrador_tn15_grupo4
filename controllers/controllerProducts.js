@@ -50,11 +50,12 @@ let productsController = {
     },
 
     edit: async (req,res) => {
+        const types = await typesModel.getTypes();
+        const product = await productsModel.updateProduct(productPut)
         let productPut = req.body
         console.log(productPut)
         let {files} = req
-        const types = await typesModel.getTypes();
-        const product = await productsModel.updateProduct(productPut)
+        
         res.redirect('products/list',{types: types, product: product})
     },
 

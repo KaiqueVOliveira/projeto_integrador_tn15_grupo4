@@ -23,17 +23,18 @@
             <table>
                 <tr>
                     <th><%- product.name %></th>
-                    <th><a role="button"
-                    href="/products/edit/<%-product.id%>"
-                    class="btn btn-warning">
-                        Editar
-                    </a></th>
+                    
                 </tr>
                 <tr>
                     <td><%- product.price %></td>
                 </tr>
                 <tr>
-                    <td><%- product.description %>/td>
+                    <td><%- product.description %></td>
+                    <td><a role="button"
+                        href="/products/edit/<%-product.id%>"
+                        class="btn btn-warning">
+                            Editar
+                        </a></td>
                 </tr>
             </table>
         </tbody>

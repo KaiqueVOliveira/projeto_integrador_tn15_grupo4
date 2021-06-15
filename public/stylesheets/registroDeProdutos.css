@@ -5,7 +5,7 @@ header {
 
 header a {
   border-bottom: 2px solid transparent;
-  color: #fbf9ff;
+  color: rgba(0,0,0,.55);
   display: inline-block;
   padding: 24px 16px;
   font-size: 16px;
@@ -36,9 +36,14 @@ header a:hover {
 p {
   padding: 0.5rem;
 }
+
 form div {
   padding: 0.5rem;
   text-align: center;
+}
+
+.d-flex button{
+  margin: 0.5rem;
 }
 
 .botoes-cancel-submit input {
