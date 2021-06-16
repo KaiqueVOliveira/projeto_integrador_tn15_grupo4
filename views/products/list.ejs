@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
-</head>
-<body>
 <%- include('../partials/header') %>
-<main class="container">
-    <h1>Produtos</h1>
+<h1 class='h1'>Lista de produtos</h1>
+<div class="d-flex flex-row bd-highlight mb-3" >
+    
     <% products.forEach(function(product) { %>
-    <div>
-        <img
+    <div  class="p-2 bd-highlight" id='div-flex'>
+        <img 
         class="rounded-circle"
-        src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-        alt="Generic placeholder image"
+        src="/images/uploads/<%= product.img %>"
+        alt="imagem <%- product.name %>"
         width="50"
         height="50"
         />
@@ -23,24 +15,30 @@
             <table>
                 <tr>
                     <th><%- product.name %></th>
-                    
+                    <th>
+                        <a role="button"
+                        href="/products/edit/<%-product.id%>"
+                        class="btn btn-warning">
+                            Editar
+                        </a>
+                    </th>
+                    <th>
+                        <form action='/products/delete/<%-product.id%>?_method=DELETE' method='post'>
+                            <button type="submit" class="btn btn-danger">
+                                Excluir
+                            </button>
+                        <form>
+
+                    </th>
                 </tr>
                 <tr>
                     <td><%- product.price %></td>
                 </tr>
-                <tr>
-                    <td><%- product.description %></td>
-                    <td><a role="button"
-                        href="/products/edit/<%-product.id%>"
-                        class="btn btn-warning">
-                            Editar
-                        </a></td>
-                </tr>
+
             </table>
         </tbody>
     </div>
     <% });%>
     
-    <%- include('../partials/footer') %>    
-</body>
-</html>
+</div>
+<%- include('../partials/footer') %>

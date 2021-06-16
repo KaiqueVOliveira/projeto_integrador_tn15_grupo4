@@ -5,6 +5,7 @@ const path = require('path')
 const config = require('../config/database');
 const Sequelize = require('sequelize');
 const db = new Sequelize(config);
+const express = require("express");
 
 
 let productsController = {
@@ -19,15 +20,14 @@ let productsController = {
     salvarForm: async (req, res) => {
         const types = await typesModel.getTypes();
         let {name, price, type, description} = req.body;
-        let {files} = req
-        
+        let file = req.file.filename        
         console.log(req)
         await db.query('insert into products (name, price, type, img, description) values (:name, :price, :type, :img, :description)',{
             replacements: {
                 name: name,
                 price: price,
                 type: type,
-                img: req.file.filename,
+                img: file,
                 description: description
             }
         })
@@ -46,17 +46,16 @@ let productsController = {
         const types = await typesModel.getTypes();
         let id = req.params.id;
         const product = await productsModel.getById(id)
-        res.render('products/edit',{types: types, product: product});
+        res.render('products/edit',{types: types, products: product});
     },
 
     edit: async (req,res) => {
         const types = await typesModel.getTypes();
-        const product = await productsModel.updateProduct(productPut)
-        let productPut = req.body
-        console.log(productPut)
-        let {files} = req
-        
-        res.redirect('products/list',{types: types, product: product})
+        let {name, price, type, description} = req.body;
+        let id = req.params.id
+        let {filename} = req.file;    
+        const product = await productsModel.updateProduct({name, price, type, description, id, filename});
+        res.render('products/edit',{types: types, products: product})
     },
 
     listarProdutos: async (req,res) => {
@@ -65,13 +64,17 @@ let productsController = {
             res.render('products/list', {products:result})
     },
 
-    deletarProduto: (req,res) => {
+    deletarProduto: async (req,res) => {
         let {id} = req.params;
-        banco = banco.filter(function(registro){
-            return registro.id !== parseInt(req.params.id);
-        });
+        const product = await productsModel.getById(id);
+        console.log(productsModel.deleteProduct(id))
+        await productsModel.deleteProduct(id);
+      
+        if (req.query.json) {
+          return res.sendStatus(200);
+        }      
 
-        res.render('products/list', {listaProdutos: banco});
+        res.redirect("/products/list");
     }
 }
 

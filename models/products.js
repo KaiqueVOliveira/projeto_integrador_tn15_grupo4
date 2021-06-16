@@ -16,17 +16,26 @@ async function getById(id){
 async function updateProduct(product) {
     const result = await db.query("update products set name = :name, price = :price, type = :type, img = :img where id = :id", {
       replacements: {
-        name: name,
-        price: price,
-        type: type,
-        img: req.file.filename,
-        id: id
+        name: product.name,
+        price: product.price,
+        type: product.type,
+        img: product.filename,
+        id: product.id
       }
     })
     return result
   }
 
+  async function deleteProduct(productId) {
+    await db.query("delete from products where id = :id " , {
+      replacements: {
+        id: productId
+      }
+    })
+  }
+
 module.exports = {
     getById:getById,
-    updateProduct:updateProduct
+    updateProduct:updateProduct,
+    deleteProduct:deleteProduct
 }
