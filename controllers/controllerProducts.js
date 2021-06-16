@@ -21,7 +21,6 @@ let productsController = {
         const types = await typesModel.getTypes();
         let {name, price, type, description} = req.body;
         let file = req.file.filename        
-        console.log(req)
         await db.query('insert into products (name, price, type, img, description) values (:name, :price, :type, :img, :description)',{
             replacements: {
                 name: name,
@@ -53,28 +52,26 @@ let productsController = {
         const types = await typesModel.getTypes();
         let {name, price, type, description} = req.body;
         let id = req.params.id
-        let {filename} = req.file;    
+        let {filename} = req.file;
         const product = await productsModel.updateProduct({name, price, type, description, id, filename});
         res.render('products/edit',{types: types, products: product})
     },
 
     listarProdutos: async (req,res) => {
-        const result = await db.query("select * from products;", { type: Sequelize.QueryTypes.SELECT });
-            console.log(result);        
-            res.render('products/list', {products:result})
+        const result = await db.query("select * from products;", { type: Sequelize.QueryTypes.SELECT });  
+            res.render('products/list', {products:result});
     },
 
     deletarProduto: async (req,res) => {
-        let {id} = req.params;
-        const product = await productsModel.getById(id);
-        console.log(productsModel.deleteProduct(id))
-        await productsModel.deleteProduct(id);
+        let productId = req.params.id;
+        const product = await productsModel.getById(productId);
+        await productsModel.deleteProduct(productId);
       
         if (req.query.json) {
           return res.sendStatus(200);
         }      
 
-        res.redirect("/products/list");
+        res.redirect("/products/list/");
     }
 }
 

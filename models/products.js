@@ -14,12 +14,13 @@ async function getById(id){
 }
 
 async function updateProduct(product) {
-    const result = await db.query("update products set name = :name, price = :price, type = :type, img = :img where id = :id", {
+    const result = await db.query("update products set name = :name, price = :price, type = :type, description = :description, img = :img where id = :id", {
       replacements: {
         name: product.name,
         price: product.price,
         type: product.type,
         img: product.filename,
+        description: product.description,
         id: product.id
       }
     })

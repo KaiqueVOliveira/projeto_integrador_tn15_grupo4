@@ -3,40 +3,52 @@
   
 </script>
 <section class="container">
-    <h1>Editar produto</h1>
-    <form action="/products/edit/<%=products.id%>?_method=PUT" method='post' enctype="multipart/form-data">
-        <div>
-          <label for="name">Nome do produto:</label>
-          <input value="<%= products.name %>" name="name" id="name" type="text">
-        </div>
-        <div>
-          <label for="price">Preço do produto:</label>
-          <input value="<%= products.price %>" name="price" id="price" type="number">
-        </div>
-        <div>
+  <h1 class="d-flex justify-content-center">Editar produto</h1>
+  <main class="d-flex justify-content-center">
+        <form action="/products/edit/<%=products.id%>?_method=PUT" method='post' enctype="multipart/form-data">
           <div>
-            <label>Tipo de produto:</label>
+            <label for="name">Nome do produto:</label>
+            <input value="<%= products.name %>" name="name" id="name" type="text">
           </div>
-          <% types.forEach(function(type) {%>
-            <div class='form-check-inline'>
-                                
-              <input type='radio' name='type' id='<%= type.id %>' class='form-check-input' value='<%= type.id %>' >
-                                                  
-              <label for="<%= type.id %>" class='form-check-label'><%= type.label %></label> 
-                    </div>
-          <% }) %>   
-        </div>
+          <div>
+            <label for="price">Preço do produto:</label>
+            <input value="<%= products.price %>" name="price" id="price" type="number">
+          </div>
+          <div>
+            <div>
+              <label>Tipo de produto:</label>
+            </div>
+            <% types.forEach(function(type) {%>
+              <div class='form-check-inline'>
+                                  
+                <input type='radio' name='type' id='<%= type.id %>' class='form-check-input' value='<%= type.id %>' >
+                                                    
+                <label for="<%= type.id %>" class='form-check-label'><%= type.label %></label> 
+              </div>
+            <% }) %>   
+          </div>
+          <div>
+            <label for="description">Descrição do produto</label>
+            <textarea
+              type="textarea"
+              id="description"
+              name="description"
+              class="form-control"><%= products.description %></textarea>
+          </div>
           <div>
               <label class='procurar-imagem-label' for='file'>Imagem do produto:</label><br>
               <input type='file' name='productImg' id='file' class='procurar-imagem'>
               
           </div> 
-        <div class='botoes-cancel-submit'>
-          <input type="submit" value="Salvar edição">
-          <input type="reset" value="Cancelar">
-        </div>
-      </form>
-
+          <div class='botoes-cancel-submit'>
+            <input id='submit-button' type="submit" value="Salvar edição">
+            <input id='cancel-button' type="reset" value="Cancelar">
+            
+            <!--<button role="delete" data-product-id="<%-products.id%>" type="submit" class="btn btn-danger">Excluir
+            </button>  --> 
+          </div>
+        </form>
+  </main>
 </section>
 
 

@@ -30,7 +30,40 @@ header a:hover {
 #search-button:hover {
   text-decoration: none;
   background-color: rgba(238, 149, 154, 0.5);
-  border-color: #f1656c;
+  font-weight: 500; 
+}
+
+#submit-button {
+  border-color: #13660c;
+  color: #0d491f;
+}
+
+#submit-button:hover {
+  text-decoration: none;
+  background-color: rgba(84, 233, 108, 0.5);
+  font-weight: 500; 
+}
+
+#cancel-button {
+  border-color: #bddd06;
+  color: #413f03;
+}
+
+#cancel-button:hover {
+  text-decoration: none;
+  background-color: rgba(241, 245, 31, 0.5);
+  font-weight: 500; 
+}
+
+#delete-button {
+  border-color: #a11705;
+  color: #660b05;
+}
+
+#delete-button:hover {
+  text-decoration: none;
+  background-color: rgba(238, 116, 111, 0.5);
+  font-weight: 500; 
 }
 
 p {

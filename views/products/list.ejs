@@ -15,30 +15,32 @@
             <table>
                 <tr>
                     <th><%- product.name %></th>
-                    <th>
+                </tr>
+                <tr>
+                    <td><%- product.price %></td>
+                </tr>
+                <tr id='product-<%-product.id%>'>
+                    <td>
                         <a role="button"
                         href="/products/edit/<%-product.id%>"
                         class="btn btn-warning">
                             Editar
                         </a>
-                    </th>
-                    <th>
-                        <form action='/products/delete/<%-product.id%>?_method=DELETE' method='post'>
-                            <button type="submit" class="btn btn-danger">
+                    </td>
+                    <td>
+                        <button role="delete" data-product-id="<%-product.id%>" type="submit" class="btn btn-danger">
                                 Excluir
                             </button>
                         <form>
 
-                    </th>
+                    </td>
                 </tr>
-                <tr>
-                    <td><%- product.price %></td>
-                </tr>
-
+                
             </table>
         </tbody>
     </div>
     <% });%>
     
 </div>
+<script src='/javascripts/products.js'></script>
 <%- include('../partials/footer') %>
