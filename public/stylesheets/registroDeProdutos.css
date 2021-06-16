@@ -75,8 +75,15 @@ form div {
   text-align: center;
 }
 
-.d-flex button{
+.d-flex main button{
   margin: 0.5rem;
+}
+
+.botoes-cancel-submit {
+  text-decoration: none;
+  border-color: #f4989c;
+  color: #cc2a32;
+  border-radius: 20%;  
 }
 
 .botoes-cancel-submit input {
@@ -107,6 +114,7 @@ form div {
 div #div-flex {
   margin: 1rem 1rem 2rem 5rem;
 }
+
 
 /*img {
   width: 100%;

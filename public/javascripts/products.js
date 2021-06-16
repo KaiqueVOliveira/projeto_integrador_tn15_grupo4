@@ -1,4 +1,4 @@
-const deleteButtons = document.querySelectorAll('button[role="delete"]');
+const deleteButtons = document.querySelectorAll('input[role="delete"]');
 
 async function onDeleteClick(event) {
   const productId = event.target.dataset.productId;

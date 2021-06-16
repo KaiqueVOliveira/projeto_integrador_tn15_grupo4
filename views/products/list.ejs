@@ -3,7 +3,7 @@
 <div class="d-flex flex-row bd-highlight mb-3" >
     
     <% products.forEach(function(product) { %>
-    <div  class="p-2 bd-highlight" id='div-flex'>
+    <div class="p-2 bd-highlight" id='div-flex'>
         <img 
         class="rounded-circle"
         src="/images/uploads/<%= product.img %>"
@@ -12,7 +12,7 @@
         height="50"
         />
         <tbody>
-            <table>
+            <table class='list'>
                 <tr>
                     <th><%- product.name %></th>
                 </tr>
@@ -21,18 +21,10 @@
                 </tr>
                 <tr id='product-<%-product.id%>'>
                     <td>
-                        <a role="button"
-                        href="/products/edit/<%-product.id%>"
-                        class="btn btn-warning">
-                            Editar
-                        </a>
+                        <button href="/products/edit/<%-product.id%>" class='botoes-cancel-submit' id='submit-button'>Editar</button>
                     </td>
                     <td>
-                        <button role="delete" data-product-id="<%-product.id%>" type="submit" class="btn btn-danger">
-                                Excluir
-                            </button>
-                        <form>
-
+                        <input role="delete" data-product-id="<%-product.id%>" type="submit" class="botoes-cancel-submit" id='delete-button' value='Excluir'>
                     </td>
                 </tr>
                 

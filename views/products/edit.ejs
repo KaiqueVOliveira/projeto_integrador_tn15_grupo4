@@ -20,10 +20,15 @@
             </div>
             <% types.forEach(function(type) {%>
               <div class='form-check-inline'>
-                                  
-                <input type='radio' name='type' id='<%= type.id %>' class='form-check-input' value='<%= type.id %>' >
+                <% if(type.label==products.type){ %>
+                  <input type='radio' name='type' id='<%= type.id %>' class='form-check-input' value='<%= type.id %>' checked>
                                                     
                 <label for="<%= type.id %>" class='form-check-label'><%= type.label %></label> 
+                <% }else{ %>                  
+                <input type='radio' name='type' id='<%= type.id %>' class='form-check-input' value='<%= type.id %>' >
+                                                    
+                <label for="<%= type.id %>" class='form-check-label'><%= type.label %></label>
+                <% } %> 
               </div>
             <% }) %>   
           </div>
