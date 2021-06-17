@@ -59,7 +59,7 @@ let productsController = {
 
     listarProdutos: async (req,res) => {
         const result = await db.query("select * from products;", { type: Sequelize.QueryTypes.SELECT });  
-            res.render('products/list', {products:result});
+            res.render('products/list', {products:result, user: req.session.user});
     },
 
     deletarProduto: async (req,res) => {

@@ -5,24 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Criar usuário</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/stylesheets/login.css">
 </head>
 
 <body>
     <div id="login-container">
-        <h1>Login</h1>
-        <form action="/login" method="POST">
-            <label for="username">Nome de usuário</label>
+        <% if (exists === true) { %>
+            <span id="error">Username já existe, favor escolher outro</span>
+        <% } %>
+        <% if (created === true) { %>
+            <span id="created">Usuário registrado com sucesso!</span>
+        <% } %>
+        <h1>Crie seu Login</h1>
+        <form action="/login/create" method="POST">
+            <label for="username">Nome de Usuário</label>
             <input type="username" name="username" id="username" placeholder="digite seu nome de usuário" autocomplete="off">
             <label for="password">Senha</label>
             <input type="password" name="password" id="password" placeholder="digite sua senha">
-            <a href="#" id="forgot-pass">Esqueceu a senha?</a>
-            <input type="submit" value="Login">
-            <% if (error === true) { %>
-                <span id="error">Erro ao fazer login</span>
-            <% } %>
+            <label for="name">Nome</label>
+            <input type="name" name="name" id="name" placeholder="digite seu nome completo">
+            
+            <input type="submit" value="criar">
+            <input type="reset" value="cancelar">
         </form>
         <div id="social-container">
             <p>Entre por outra rede</p>
@@ -33,7 +39,7 @@
         </div>
         <div id="register-container">
             <p> Ainda não tem uma conta?</p> 
-            <a href="/login/register">Registrar</a>
+            <a href="#">Registrar</a>
         </div>
     </div>
 </body>

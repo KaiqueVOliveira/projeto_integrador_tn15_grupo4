@@ -1,19 +1,57 @@
-const Sequelize = require('sequelize');
-const configDataBase = require('../config/database');
-const db = new Sequelize(configDataBase);
+const Sequelize = require("sequelize");
+const config = require("../config/database");
+const db = new Sequelize(config);
 
-async function getUser(credentialsS) {
-    const response = await db.query("SELECT * FROM login where email = :email", {
-    type: Sequelize.QueryTypes.SELECT,
-    replacements:{
-        email: credentialsS.email,
-    },   
-});
-   
-    console.log('resposta do banco', response);
- return response[0];
+async function get(username) {
+  const user = await db.query(
+    "SELECT id, name, username, password FROM login WHERE username = :username;",
+    {
+      type: Sequelize.QueryTypes.SELECT,
+      replacements: {
+        username,
+      },
+    }
+  );
+  return user[0];
+}
+
+async function post({ name, username, password }) {
+  await db.query(
+    "INSERT INTO login (name, username, password) VALUES (:name, :username, :password)",
+    {
+      replacements: {
+        name,
+        username,
+        password,
+      },
+    }
+  );
+}
+
+async function put({ id, name, password }) {
+  await db.query(
+    "UPDATE login SET name = :name, password: password WHERE id = :id",
+    {
+      replacements: {
+        id,
+        name,
+        password,
+      },
+    }
+  );
+}
+
+async function remove(id) {
+  await db.query("DELET FROM login WHERE id = :id", {
+    replacements: {
+      id,
+    },
+  });
 }
 
 module.exports = {
-    getUser: getUser,
-}
+  get: get,
+  post: post,
+  put: put,
+  remove: remove,
+};

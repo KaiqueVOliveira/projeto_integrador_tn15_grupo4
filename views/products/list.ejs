@@ -2,6 +2,8 @@
 <h1 class='h1'>Lista de produtos</h1>
 <div class="d-flex flex-row bd-highlight mb-3" >
     
+    <h1>Olá <%= user.name %></h1>
+    <p>Escolha a área desejada</p>
     <% products.forEach(function(product) { %>
     <div class="p-2 bd-highlight" id='div-flex'>
         <img 
@@ -21,7 +23,7 @@
                 </tr>
                 <tr id='product-<%-product.id%>'>
                     <td>
-                        <button href="/products/edit/<%-product.id%>" class='botoes-cancel-submit' id='submit-button'>Editar</button>
+                        <a href="/products/edit/<%-product.id%>" class='botoes-cancel-submit' id='submit-button'>Editar</a>
                     </td>
                     <td>
                         <input role="delete" data-product-id="<%-product.id%>" type="submit" class="botoes-cancel-submit" id='delete-button' value='Excluir'>
