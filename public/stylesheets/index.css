@@ -1,0 +1,44 @@
+
+/*index*/
+
+.produtos{
+    background-image: url('../images/login/Cosmeticos_background2.jpg');
+    background-size:cover;
+}
+
+/*Produtos*/
+.curta {
+    text-align:center;
+    font-size: 3em;
+    margin: 0 10px 60px 10px;
+    color: rgba(0,0,0,.55);
+    background-color: rgba(187, 145, 243, 0.2);
+}
+.produtos{
+    width: 95%;
+    height: 900px;
+    /*margin: 60px auto; */  
+    margin: 0 auto 0 auto;
+    margin-top: -3.8%;
+    text-align:center;
+   }
+.produtos h1{
+    font-size: 3em;
+    margin: 0 10px 60px 10px;
+    color: #daa520;
+}
+
+.produtos h2{
+    font-size: 3em;
+    margin: 0 10px 0px 10px;
+}
+
+.produtos-container{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.produtos-item{
+    flex: 1 1 175px;
+    margin: 10px;
+}

@@ -2,10 +2,8 @@
 <h1 class='h1'>Lista de produtos</h1>
 <div class="d-flex flex-row bd-highlight mb-3" >
     
-    <h1>Olá <%= user.name %></h1>
-    <p>Escolha a área desejada</p>
     <% products.forEach(function(product) { %>
-    <div class="p-2 bd-highlight" id='div-flex'>
+    <div  class="p-2 bd-highlight" id='div-flex'>
         <img 
         class="rounded-circle"
         src="/images/uploads/<%= product.img %>"
@@ -14,27 +12,33 @@
         height="50"
         />
         <tbody>
-            <table class='list'>
+            <table>
                 <tr>
-                    <th><%- product.name %></th>
+                    <th><%- product.name %></th>                   
                 </tr>
                 <tr>
-                    <td><%- product.price %></td>
+                    <td>R$<%-product.price %></td>
                 </tr>
-                <tr id='product-<%-product.id%>'>
-                    <td>
-                        <a href="/products/edit/<%-product.id%>" class='botoes-cancel-submit' id='submit-button'>Editar</a>
-                    </td>
-                    <td>
-                        <input role="delete" data-product-id="<%-product.id%>" type="submit" class="botoes-cancel-submit" id='delete-button' value='Excluir'>
-                    </td>
-                </tr>
-                
+                <th>
+                    <a role="button"
+                    href="/products/edit/<%-product.id%>"
+                    class="btn btn-warning">
+                        Editar
+                    </a>
+                </th>
+                <th class='excluir'>
+                    <form action='/products/delete/<%-product.id%>?_method=DELETE' method='post'>
+                        <button type="submit" class="btn btn-danger">
+                            Excluir
+                        </button>
+                    <form>
+
+                </th>
+
             </table>
         </tbody>
     </div>
     <% });%>
     
 </div>
-<script src='/javascripts/products.js'></script>
 <%- include('../partials/footer') %>

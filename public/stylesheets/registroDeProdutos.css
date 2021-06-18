@@ -23,6 +23,10 @@ header a:hover {
   display: flex;
 }
 
+#login-button{
+  border-left:none
+}
+
 #search-button {
   border-color: #f4989c;
   color: #cc2a32;
@@ -116,7 +120,6 @@ form div {
 div #div-flex {
   margin: 1rem 1rem 2rem 5rem;
 }
-
 
 /*img {
   width: 100%;
