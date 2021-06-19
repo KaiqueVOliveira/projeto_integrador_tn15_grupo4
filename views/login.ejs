@@ -12,29 +12,59 @@
 
 <body>
     <div id="login-container">
-        <h1>Login</h1>
-        <form action="/login" method="POST">
-            <label for="username">Nome de usuário</label>
-            <input type="username" name="username" id="username" placeholder="digite seu nome de usuário" autocomplete="off">
-            <label for="password">Senha</label>
-            <input type="password" name="password" id="password" placeholder="digite sua senha">
-            <a href="#" id="forgot-pass">Esqueceu a senha?</a>
-            <input type="submit" value="Login">
-            <% if (error === true) { %>
-                <span id="error">Erro ao fazer login</span>
-            <% } %>
-        </form>
-        <div id="social-container">
-            <p>Entre por outra rede</p>
-            <i class="fa fa-facebook-f"></i>
-            <i class="fa fa-twitter"></i>
-            <i class="fa fa-google"></i>
-            <i class="fa fa-instagram"></i>
-        </div>
-        <div id="register-container">
-            <p> Ainda não tem uma conta?</p> 
-            <a href="/login/register">Registrar</a>
-        </div>
+        
+        <% if(error==false){ %>
+            
+            <% if(loggedUser == null){ %>
+                <h1>Login</h1>
+                <form action="/login" method="POST">
+            
+                <label for="username">Nome de usuário</label>
+
+                <input type="username" name="username" id="username" placeholder="digite seu nome de usuário" autocomplete="off">
+                
+                <label for="password">Senha</label>
+                <input type="password" name="password" id="password" placeholder="digite sua senha">
+                <a href="#" id="forgot-pass">Esqueceu a senha?</a>
+
+                <input type="submit" value="Login">
+                
+                <fieldset>
+					<legend>Escolha o tipo de login</legend>
+					<select id='userType' name='userType'>
+                        <option selected='selected' id='buyer'>comprador</option>
+                        <option id='admin'>admin</option>
+					</select>
+				</fieldset>
+
+                <% if (error) { %>
+                    <span id="error">Erro ao fazer login</span>
+                <% } %>    
+                
+                <div id="social-container">
+                    <p>Entre por outra rede</p>
+                    <i class="fa fa-facebook-f"></i>
+                    <i class="fa fa-twitter"></i>
+                    <i class="fa fa-google"></i>
+                    <i class="fa fa-instagram"></i>
+                </div>
+                <div id="register-container">
+                    <p> Ainda não tem uma conta?</p> 
+                    <a href="/login/register">Registrar</a>
+                </div>
+                </form>
+
+            <% } else{ %>
+                <h1>olá <%= loggedUser.username %> você não Pode entrar na área solicitada, por favor retorne.</h1>
+                <h3>Clique aqui para voltar para a Home</h3>
+                <a href='/'>
+                <input  type="button" value="home">
+                </a>
+            <% } %> 
+        <% } %>
+            
+
+
     </div>
 </body>
 

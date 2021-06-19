@@ -10,6 +10,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products')
 var authRouter = require('./routes/login');
+var cookieMiddleware = require('./middlewares/cookie');
+
 
 
 var app = express();
@@ -20,8 +22,8 @@ app.set('view engine', 'ejs');
 
 app.use(
   session({
-    secret: "NewOneSecretCouldBeAnything",
-    resave: true,
+    secret: "SegredoDoProjetoDoGrupo04",
+    resave: false,
     saveUninitialized: true,
   })
 );
@@ -32,6 +34,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride("_method"));
+//app.use(cookieMiddleware)
 
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);

@@ -11,17 +11,22 @@ const express = require("express");
 let productsController = {
 
     viewForm: async(req, res) => {
+        
+        let loggedUser = req.session.user
         const types = await typesModel.getTypes();
 
-        return res.render('products/register',{types:types});
+        return res.render('products/register',{types:types, username: loggedUser.username, loggedUser:loggedUser, usertype: loggedUser.usertype});
         
     },
     
     salvarForm: async (req, res) => {
         const types = await typesModel.getTypes();
+
         let {name, price, type, description} = req.body;
-        let file = req.file.filename        
+        let file = req.file.filename  ;  
+
         await db.query('insert into products (name, price, type, img, description) values (:name, :price, :type, :img, :description)',{
+
             replacements: {
                 name: name,
                 price: price,
@@ -29,7 +34,7 @@ let productsController = {
                 img: file,
                 description: description
             }
-        })
+        });
         
 
           
@@ -38,33 +43,42 @@ let productsController = {
         banco.push(req.body)
         console.log(banco)*/
         
-        res.render('products/register',{types: types})
+        res.render('products/register',{types: types});
     },
 
     getProductById:  async (req,res) => {
         const types = await typesModel.getTypes();
+        
+        let loggedUser = req.session.user
         let id = req.params.id;
-        const product = await productsModel.getById(id)
-        res.render('products/edit',{types: types, products: product});
+
+        const product = await productsModel.getById(id);
+
+        res.render('products/edit',{types: types, products: product, loggedUser:loggedUser});
     },
 
     edit: async (req,res) => {
         const types = await typesModel.getTypes();
+        
         let {name, price, type, description} = req.body;
-        let id = req.params.id
+        let id = req.params.id;
         let {filename} = req.file;
+
         const product = await productsModel.updateProduct({name, price, type, description, id, filename});
-        res.render('products/edit',{types: types, products: product})
+
+        res.render('products/edit',{types: types, products: product});
     },
 
     listarProdutos: async (req,res) => {
-        const result = await db.query("select * from products;", { type: Sequelize.QueryTypes.SELECT });  
-            res.render('products/list', {products:result, user: req.session.user});
+        const result = await db.query("select * from products;", { type: Sequelize.QueryTypes.SELECT });
+        let loggedUser = req.session.user
+        res.render('products/list', {products:result, user: req.session.user, loggedUser:loggedUser});
     },
 
     deletarProduto: async (req,res) => {
         let productId = req.params.id;
-        const product = await productsModel.getById(productId);
+        
+        //const product = await productsModel.getById(productId);
         await productsModel.deleteProduct(productId);
       
         if (req.query.json) {

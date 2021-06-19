@@ -4,10 +4,11 @@ var auth = require('../middlewares/auth')
 
 const loginController = require("../controllers/controllerLogin");
 
+
 /* GET home page. */
 router.get("/", loginController.get);
 
-router.post("/", auth, loginController.login);
+router.post("/", loginController.login);
 
 router.get("/register", loginController.getRegister)
 

@@ -98,6 +98,28 @@ input[type="submit"]:hover {
   transition: .9s;
 }
 
+a[href='/']{
+  text-decoration: none;
+}
+
+input[type="button"] {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 30px;
+  color: #FFF;
+  background-color: #eece7cb6;
+  cursor: pointer;
+}
+  
+input[type="button"]:hover {
+  background-color: #dba520;
+  transition: .9s;
+}
+
 /* SPAN TELA REGISTER */
 
 span#error {

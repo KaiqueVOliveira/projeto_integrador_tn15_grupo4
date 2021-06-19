@@ -2,8 +2,10 @@ const bcrypt = require("bcrypt");
 
 const loginModel = require("../models/login");
 
-function get(_, res) {
-  res.render("login", { error: false, created: false, exists: false });
+function get(req, res) {
+  console.log(req.session.user)
+  let loggedUser = req.session.user
+  res.render("login", { error: false, created: false, exists: false, loggedUser: loggedUser});
 }
 
 function getRegister(_, res) {
@@ -11,24 +13,43 @@ function getRegister(_, res) {
 }
 
 async function login(req, res) {
-  const { username, password } = req.body;
-
+  const { username, password, userType} = req.body;
+  console.log(userType)
   const user = await loginModel.get(username);
-
-  if (!user) {
-    res.render("login", { error: true, created: false, exists: false });
-  }
-  const comparePassword = bcrypt.compareSync(password, user.password);
-  if (!comparePassword) {
-    res.render("login", { error: true, created: false, exists: false });
-  } else {
-    req.session.user = {
-      id: user.id,
-      name: user.name,
-      username: user.username,
-    };
-    
-    res.redirect("/");
+  if(userType == 'admin'){
+    if (!user) {
+      res.render("login", { error: true, created: false, exists: false });
+    }
+    const comparePassword = bcrypt.compareSync(password, user.password);
+    if (!comparePassword) {
+      res.render("login", { error: true, created: false, exists: false });
+    }
+    else {
+      req.session.user = {
+        id: user.id,
+        name: user.name,
+        username: user.username,
+        usertype: user.usertype
+      };
+      res.redirect("/products/");
+    }
+  }else{
+    if (!user) {
+      res.render("login", { error: true, created: false, exists: false });
+    }
+    const comparePassword = bcrypt.compareSync(password, user.password);
+    if (!comparePassword) {
+      res.render("login", { error: true, created: false, exists: false });
+    } 
+    else {
+      req.session.user = {
+        id: user.id,
+        name: user.name,
+        username: user.username,
+        usertype: user.usertype
+      };
+      res.redirect("/");
+    }
   }
 }
 

@@ -1,6 +1,6 @@
-function auth(req, res, next){
+function adminAuth(req, res, next){
     console.log(req.session.user)
-    if(typeof(req.session.user) != 'undefined'){
+    if(typeof(req.session.user) != 'undefined' && req.session.user.usertype == 'admin'){
         
         return next();
         
@@ -13,4 +13,4 @@ function auth(req, res, next){
     
 }
 
-module.exports = auth
+module.exports = adminAuth

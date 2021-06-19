@@ -4,7 +4,7 @@ const db = new Sequelize(config);
 
 async function get(username) {
   const user = await db.query(
-    "SELECT id, name, username, password FROM login WHERE username = :username;",
+    "SELECT id, name, username, password, usertype FROM login WHERE username = :username;",
     {
       type: Sequelize.QueryTypes.SELECT,
       replacements: {
@@ -17,12 +17,13 @@ async function get(username) {
 
 async function post({ name, username, password }) {
   await db.query(
-    "INSERT INTO login (name, username, password) VALUES (:name, :username, :password)",
+    "INSERT INTO login (name, username, password, usertype) VALUES (:name, :username, :password, :usertype)",
     {
       replacements: {
         name,
         username,
         password,
+        usertype: 'buyer'
       },
     }
   );
