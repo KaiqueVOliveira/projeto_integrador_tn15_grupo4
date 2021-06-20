@@ -1,4 +1,4 @@
-<%- include('../partials/header') %>
+<%- include('../partials/header3') %>
 <script>
   
 </script>
@@ -20,7 +20,7 @@
             </div>
             <% types.forEach(function(type) {%>
               <div class='form-check-inline'>
-                <% if(type.label==products.type){ %>
+                <% if(type.id==products.type){ %>
                   <input type='radio' name='type' id='<%= type.id %>' class='form-check-input' value='<%= type.id %>' checked>
                                                     
                 <label for="<%= type.id %>" class='form-check-label'><%= type.label %></label> 

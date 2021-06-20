@@ -7,12 +7,19 @@ router.get ('/', async function(req, res, next) {
   let loggedUser = req.session.user
   console.log(loggedUser)
   if(loggedUser){
-    const user = await loginModel.get(loggedUser.username)
+    if(req.session.user.usertype == 'admin'){
+      const user = await loginModel.get(loggedUser.username);
+      res.render('index', {loggedUser: true, adminLogin:true});
+    }
+    else{
+      const user = await loginModel.get(loggedUser.username);
+      res.render('index', {loggedUser: true, adminLogin:false});
+    }
   }
   else{
-    res.redirect('/login')
-  }
-  res.render('index', {loggedUser: loggedUser, adminLogin: user.userType});
+    res.render('index', {loggedUser: false, adminLogin:false});
+  } 
 });
 
 module.exports = router;
+

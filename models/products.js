@@ -13,18 +13,46 @@ async function getById(id){
     return result[0]
 }
 
-async function updateProduct(product) {
-    const result = await db.query("update products set name = :name, price = :price, type = :type, description = :description, img = :img where id = :id", {
-      replacements: {
+async function saveProduct(product){
+  const result = await db.query('insert into products (name, price, type, img, description) values (:name, :price, :type, :img, :description)',{
+
+    replacements: {
         name: product.name,
         price: product.price,
         type: product.type,
         img: product.filename,
-        description: product.description,
-        id: product.id
-      }
-    })
-    return result
+        description: product.description
+    }
+  })
+  return result
+}
+
+async function updateProduct(product,file) {
+    if(file){
+      const result = await db.query("update products set name = :name, price = :price, type = :type, description = :description, img = :img where id = :id", {
+        replacements: {
+          name: product.name,
+          price: product.price,
+          type: product.type,
+          img: product.filename,
+          description: product.description,
+          id: product.id
+        }
+      })
+      return result
+    }
+    else{
+      const result = await db.query("update products set name = :name, price = :price, type = :type, description = :description where id = :id", {
+        replacements: {
+          name: product.name,
+          price: product.price,
+          type: product.type,
+          description: product.description,
+          id: product.id
+        }
+      })
+      return result
+    }
   }
 
   async function deleteProduct(productId) {
@@ -38,5 +66,6 @@ async function updateProduct(product) {
 module.exports = {
     getById:getById,
     updateProduct:updateProduct,
-    deleteProduct:deleteProduct
+    deleteProduct:deleteProduct,
+    saveProduct:saveProduct
 }

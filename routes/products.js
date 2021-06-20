@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-let productsController = require('../controllers/controllerProducts');
+let productsController = require('../controllers/productsController');
 let auth = require('../middlewares/auth');
 let adminAuth = require('../middlewares/adminAuth');
 const multer = require('multer');
@@ -21,13 +21,13 @@ var storage = multer.diskStorage({
 var upload = multer({storage: storage})
 
 /* GET home page. */
-router.get('/', adminAuth, productsController.viewForm);
-router.post('/', upload.single('productImg'), productsController.salvarForm);
+//router.get('/register', adminAuth, productsController.viewForm);
+router.post('/register', upload.single('productImg'), productsController.registerProduct);
 
-router.get('/edit/:id',productsController.getProductById);
+router.get('/edit/:id', adminAuth, productsController.getProductById);
 router.put('/edit/:id', upload.single('productImg'), productsController.edit);
 
-router.get('/list', productsController.listarProdutos);
-router.delete('/edit/:id', productsController.deletarProduto);
+router.get('/list', productsController.listProducts);
+router.delete('/delete/:id', productsController.deleteProducts);
 
 module.exports = router;

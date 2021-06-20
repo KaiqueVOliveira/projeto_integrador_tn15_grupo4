@@ -1,4 +1,4 @@
-<%- include('../partials/header2') %>
+<%- include('../partials/header3') %>
 <h1 class='h1'>Lista de produtos</h1>
 <div class="d-flex flex-row bd-highlight mb-3" >
     
@@ -19,22 +19,22 @@
                 <tr>
                     <td>R$<%-product.price %></td>
                 </tr>
-                <th>
-                    <a role="button"
-                    href="/products/edit/<%-product.id%>"
-                    class="btn btn-warning">
-                        Editar
-                    </a>
-                </th>
-                <th class='excluir'>
-                    <form action='/products/delete/<%-product.id%>?_method=DELETE' method='post'>
-                        <button type="submit" class="btn btn-danger">
-                            Excluir
-                        </button>
-                    <form>
-
-                </th>
-
+                <% if(adminLogin){ %>
+                    <th>
+                        <a role="button"
+                        href="/products/edit/<%-product.id%>"
+                        class="btn btn-warning">
+                            Editar
+                        </a>
+                    </th>
+                    <th class='excluir'>
+                        <form action='/products/delete/<%-product.id%>?_method=DELETE' method='post'>
+                            <button type="submit" class="btn btn-danger">
+                                Excluir
+                            </button>
+                        <form>
+                    </th>
+                <% } %>
             </table>
         </tbody>
     </div>

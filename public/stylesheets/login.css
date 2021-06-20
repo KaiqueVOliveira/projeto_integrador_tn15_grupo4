@@ -1,28 +1,31 @@
 /* GERAL */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@200;400&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@200;400&display=swap");
 
 * {
-  Margin:0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Libre Baskerville', serif;
+  font-family: "Libre Baskerville", serif;
   color: #323232;
   border: none;
 }
 
 body {
-background-image: url('../images/login/Cosmeticos_background2.jpg') ;
-background-size: cover;
+  background-image: url("../images/login/Cosmeticos_background2.jpg");
+  background-size: cover;
 }
 
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
   outline: none;
+}
+h1 {
+  margin-top: 0.5rem;
 }
 
 /*resposivo a fonte perante a tela*/
-a{
-font-size: .8rem;
+a {
+  font-size: 0.8rem;
 }
 
 /*efeito de passar o mouse sobre o link e alterar a cor*/
@@ -34,7 +37,7 @@ a:hover {
 /* container login */
 
 #login-container {
-  background-color: #FFF;
+  background-color: #fff;
   width: 400px;
   /*centralizar o objeto na tela*/
   margin-left: auto;
@@ -47,12 +50,13 @@ a:hover {
   text-align: center;
 }
 
-form{
+form {
   margin-top: 30px;
   margin-bottom: 40px;
 }
 
-label, input {
+label,
+input {
   display: block;
   width: 100%;
   text-align: left;
@@ -60,7 +64,7 @@ label, input {
 
 label {
   font-weight: bold;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 input {
@@ -68,7 +72,6 @@ input {
   padding: 10px;
   font-size: 1rem;
   margin-bottom: 20px;
-
 }
 
 input:focus {
@@ -81,24 +84,24 @@ input:focus {
 }
 
 input[type="submit"] {
-text-align: center;
-text-transform: uppercase;
-font-weight: bold;
-border: none;
-height: 40px;
-border-radius: 20px;
-margin-top: 30px;
-color: #FFF;
-background-color: #eece7cb6;
-cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 30px;
+  color: #fff;
+  background-color: #eece7cb6;
+  cursor: pointer;
 }
 
 input[type="submit"]:hover {
   background-color: #dba520;
-  transition: .9s;
+  transition: 0.9s;
 }
 
-a[href='/']{
+a[href="/"] {
   text-decoration: none;
 }
 
@@ -110,29 +113,32 @@ input[type="button"] {
   height: 40px;
   border-radius: 20px;
   margin-top: 30px;
-  color: #FFF;
+  color: #fff;
   background-color: #eece7cb6;
   cursor: pointer;
 }
-  
+
 input[type="button"]:hover {
   background-color: #dba520;
-  transition: .9s;
+  transition: 0.9s;
 }
 
 /* SPAN TELA REGISTER */
 
 span#error {
-  margin-top: 10px;
   border: 1px solid #ff4b2b;
   background-color: #ff4b2b;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
-  padding: 12px 45px;
+  padding: 8px 20px;
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+}
+
+.p-span {
+  padding: 0.7rem;
 }
 
 span#created {
@@ -150,22 +156,23 @@ span#created {
 
 /* Rede social*/
 
-#social-container, #social-container p {
+#social-container,
+#social-container p {
   margin-bottom: 20px;
-  }
+}
 
 #social-container i {
   height: 40px;
   width: 40px;
   border-radius: 50%;
   line-height: 40px;
-  color: #FFF;
+  color: #fff;
   margin: 0 5px;
   cursor: pointer;
 }
 
 .fa-facebook-f {
-  background-color: #3B5998;
+  background-color: #3b5998;
 }
 
 .fa-twitter {
@@ -177,15 +184,29 @@ span#created {
 }
 
 .fa-instagram {
-
-  background: #f09433; 
-  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+  background: #f09433;
+  background: -moz-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
 }
-
-
-
-
-
-
