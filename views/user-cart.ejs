@@ -1,28 +1,35 @@
 <%- include('./partials/header3') %>
 <h1 class='h1'>Lista de produtos</h1>
 <div class="d-flex flex-row bd-highlight mb-3" >
-    
-    <% products.forEach(function(product) { %>
-    <div  class="p-2 bd-highlight" id='div-flex'>
-        <img 
-        class="rounded-circle"
-        src="/images/uploads/<%= product.img %>"
-        alt="imagem <%- product.name %>"
-        width="50"
-        height="50"
-        />
-        <tbody>
-            <table>
-                <tr>
-                    <th><%- product.name %></th>                   
-                </tr>
-                <tr>
-                    <td>R$<%-product.price %></td>
-                </tr>
-            </table>
-        </tbody>
-    </div>
-    <% });%>
+    <% if (cartProductError) { %>
+        <span id="error"> Por favor faça login para ver seu carrinho</span>
+    <% } %>
+    <% if(!product){ %>
+        <span id="error"> Você ainda não possui nenhum produto :(</span>
+    <% } else { %>
+        
+        <% products.forEach(function(product) { %>
+            <div  class="p-2 bd-highlight" id='div-flex'>
+                <img 
+                class="rounded-circle"
+                src="/images/uploads/<%= product.img %>"
+                alt="imagem <%- product.name %>"
+                width="50"
+                height="50"
+                />
+                <tbody>
+                    <table>
+                        <tr>
+                            <th><%- product.name %></th>                   
+                        </tr>
+                        <tr>
+                            <td>R$<%-product.price %></td>
+                        </tr>
+                    </table>
+                </tbody>
+            </div>
+        <% });%>
+    <% } %>
     
 </div>
 <%- include('./partials/footer') %>

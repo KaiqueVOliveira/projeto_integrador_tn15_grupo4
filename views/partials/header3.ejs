@@ -25,7 +25,7 @@
                                 <a class="nav-link" href="/products/list">Produtos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/login/products">Cadastrar produtos</a>
+                                <a class="nav-link" href="/products/register">Cadastrar produtos</a>
                             </li>
                             </li>
                             <li class="nav-item">
@@ -37,9 +37,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/products/list">Produtos</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/login/cart/<%- id %>">Meu carrinho</a>
-                            </li>
+                            <% if(loggedUser){ %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login/cart/<%= user %>">Meu carrinho</a>
+                                </li>
+                                
+                            <% } else{ %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login/">Meu carrinho</a>
+                                </li>
+                            <% } %>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Contato</a>

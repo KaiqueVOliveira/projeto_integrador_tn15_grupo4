@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var auth = require('../middlewares/auth')
 var adminAuth = require('../middlewares/adminAuth')
 
 const loginController = require("../controllers/loginController");
@@ -16,8 +17,8 @@ router.get("/register", loginController.getRegister)
 
 router.post("/create", loginController.post);
 
-router.get('/cart/:id', cartController.cartView);
+router.get('/cart/:id',auth, cartController.cartView);
 
-router.get('/products', adminAuth, cartController.productsView)
+
 
 module.exports = router;

@@ -87,6 +87,14 @@ let productsController = {
         }      
 
         res.redirect("/products/list/");
+    },
+
+    getDetails: async(req,res)=>{
+        let id = req.params.id;
+
+        const product = await productsModel.getById(id);
+
+        res.render('products/details',{products: product, loggedUser: true, adminLogin:true, productAdded:false});
     }
 }
 

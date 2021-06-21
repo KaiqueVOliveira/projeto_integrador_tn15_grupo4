@@ -7,7 +7,6 @@ var logger = require('morgan');
 const methodOverride = require('method-override');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products')
 var authRouter = require('./routes/login');
 var cookieMiddleware = require('./middlewares/cookie');

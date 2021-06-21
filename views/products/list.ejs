@@ -4,17 +4,17 @@
     
     <% products.forEach(function(product) { %>
     <div  class="p-2 bd-highlight" id='div-flex'>
-        <img 
+        <a href="/products/details/:id"><img 
         class="rounded-circle"
         src="/images/uploads/<%= product.img %>"
         alt="imagem <%- product.name %>"
         width="50"
         height="50"
-        />
+        /></a>
         <tbody>
             <table>
                 <tr>
-                    <th><%- product.name %></th>                   
+                    <th><a href="/products/details/<%- product.id %>"><%- product.name %></a> </th>            
                 </tr>
                 <tr>
                     <td>R$<%-product.price %></td>

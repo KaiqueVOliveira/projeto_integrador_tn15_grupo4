@@ -3,29 +3,53 @@ const config = require("../config/database");
 const { get } = require("./login");
 const db = new Sequelize(config);
 
-async function getById(id){
-    const result = await db.query('select * from cart where userId = :userId',{
+async function getUserById(username){
+    const result = await db.query('select * from cart where username = :username',{
         type: Sequelize.QueryTypes.SELECT,
         replacements: {
-            userId: id.id
+            username: username.username,
         }
     });
 
     return result[0]
 }
 
-async function insertIntoCart(item){
+async function getProductById(productId){
+    const result = await db.query('select * from cart where productId = :productId',{
+        type: Sequelize.QueryTypes.SELECT,
+        replacements: {
+            productId: productId
+        }
+    });
 
-    await db.query('insert into cart (userId, productId) values (:userId, :productId)',{
+    return result[0]
+}
+
+async function insertUserIntoCart(item){
+
+    await db.query('insert into cart (userName) values (:userName)',{
 
         replacements: {
-            userId: item.userId,
-            productId: item.productId
+            userName: item.username
         }
     })
 }
 
+async function insertIntoCart(user, product){
+
+    await db.query('insert into cart (userName, productId) values (:userName, :productId)',{
+
+        replacements: {
+            userName: user.username,
+            productId: product
+        }
+    })
+}
+
+
 module.exports = {
-    getById:getById,
+    getUserById:getUserById,
+    getProductById:getProductById,
+    insertUserIntoCart: insertUserIntoCart,
     insertIntoCart:insertIntoCart
 }

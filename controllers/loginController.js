@@ -1,9 +1,10 @@
 const bcrypt = require("bcrypt");
 
 const loginModel = require("../models/login");
+const cartModel = require('../models/cart');
 
 function get(req, res) {
-  console.log(req.session.user)
+  //console.log(req.session.user)
   let loggedUser = req.session.user
   res.render("login", {loggedUser:loggedUser, error: false , created: false, exists: false, cartError:false, productsError:false });
 }
@@ -33,7 +34,8 @@ async function login(req, res) {
       name: user.name,
       username: user.username,
       usertype: user.usertype
-    },{checklogin:true, error: false};
+    },{checklogin:true, error: false, cartError:false, productsError:false};
+    
     res.redirect("/");
   }
 }
@@ -44,7 +46,7 @@ async function post(req, res) {
   const user = await loginModel.get(username);
 
   if (user) {
-    res.render("register-login", { error: true, created: false, exists: true });
+    res.render("register-login", { error: true, created: false, exists: true, cartError:false, productsError:false });
   }
 
   const encryptPassword = bcrypt.hashSync(password, 12);
@@ -55,10 +57,15 @@ async function post(req, res) {
     password: encryptPassword,
   });
 
+  cartModel.insertUserIntoCart(req.body);
+
   res.render("login", {
     error: false,
     created: true,
     exists: false,
+    cartError:false, 
+    productsError:false, 
+    loggedUser:false
   });
 }
 

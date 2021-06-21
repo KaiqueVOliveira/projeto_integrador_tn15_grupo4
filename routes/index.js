@@ -13,7 +13,7 @@ router.get ('/', async function(req, res, next) {
     }
     else{
       const user = await loginModel.get(loggedUser.username);
-      res.render('index', {loggedUser: true, adminLogin:false});
+      res.render('index', {loggedUser: true, adminLogin:false, user:loggedUser.id});
     }
   }
   else{

@@ -3,6 +3,7 @@ var router = express.Router();
 let productsController = require('../controllers/productsController');
 let auth = require('../middlewares/auth');
 let adminAuth = require('../middlewares/adminAuth');
+let cartController = require('../controllers/cartController');
 const multer = require('multer');
 const path = require('path');
 const {check,validationResult, body} = require('express-validator');
@@ -21,7 +22,7 @@ var storage = multer.diskStorage({
 var upload = multer({storage: storage})
 
 /* GET home page. */
-//router.get('/register', adminAuth, productsController.viewForm);
+router.get('/register', adminAuth, productsController.viewForm);
 router.post('/register', upload.single('productImg'), productsController.registerProduct);
 
 router.get('/edit/:id', adminAuth, productsController.getProductById);
@@ -29,5 +30,9 @@ router.put('/edit/:id', upload.single('productImg'), productsController.edit);
 
 router.get('/list', productsController.listProducts);
 router.delete('/delete/:id', productsController.deleteProducts);
+
+router.get('/details/:id', productsController.getDetails);
+
+router.post('/addtocart/:id', cartController.cartInsert)
 
 module.exports = router;
