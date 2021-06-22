@@ -111,6 +111,24 @@ form div {
   color: #140f0f;
   
 }
+/*span*/
+#span-details{
+  width: 500px;
+  justify-content: center;
+}
+
+span#error {
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 8px 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+
 /*products.list*/
 .h1 {
   margin:0 0 1rem 5rem;
@@ -119,6 +137,15 @@ form div {
 
 div #div-flex {
   margin: 1rem 1rem 2rem 5rem;
+}
+/* products details */
+
+#div-details{
+  height: 27rem;
+};
+
+.details-table{
+  font-size: larger;
 }
 
 /*img {

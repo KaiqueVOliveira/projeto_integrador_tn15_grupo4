@@ -90,12 +90,24 @@ let productsController = {
     },
 
     getDetails: async(req,res)=>{
-        let id = req.params.id;
+        let loggedUser = req.session.user
+        if(loggedUser){
+            let usertype = loggedUser.usertype
+            let id = req.params.id;
 
-        const product = await productsModel.getById(id);
+            const product = await productsModel.getById(id);
 
-        res.render('products/details',{products: product, loggedUser: true, adminLogin:true, productAdded:false});
+            res.render('products/details',{usertype: usertype, products: product, loggedUser: true, adminLogin:true, productAdded:false});
+        }
+        else{
+            
+            let id = req.params.id;
+            const product = await productsModel.getById(id);
+
+            res.render('products/details',{products: product, loggedUser: false, adminLogin:true, productAdded:false});
+        }
+
     }
-}
+}   
 
 module.exports = productsController;

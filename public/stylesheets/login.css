@@ -101,6 +101,24 @@ input[type="submit"]:hover {
   transition: 0.9s;
 }
 
+input[type="reset"] {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 30px;
+  color: #fff;
+  background-color: #d18f2cb6;
+  cursor: pointer;
+}
+
+input[type="reset"]:hover {
+  background-color: #be7c19;
+  transition: 0.9s;
+}
+
 a[href="/"] {
   text-decoration: none;
 }
@@ -153,6 +171,7 @@ span#created {
   text-transform: uppercase;
   transition: transform 80ms ease-in;
 }
+
 
 /* Rede social*/
 

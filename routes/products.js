@@ -33,6 +33,6 @@ router.delete('/delete/:id', productsController.deleteProducts);
 
 router.get('/details/:id', productsController.getDetails);
 
-router.post('/addtocart/:id', cartController.cartInsert)
+router.post('/addtocart/:id',auth, cartController.cartInsert)
 
 module.exports = router;
