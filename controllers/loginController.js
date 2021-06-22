@@ -69,9 +69,15 @@ async function post(req, res) {
   });
 }
 
+async function logout(req, res) {
+  req.session.destroy();
+  res.redirect('/')
+}
+
 module.exports = {
   get,
   login,
   post,
-  getRegister
+  getRegister,
+  logout
 };

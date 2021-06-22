@@ -19,6 +19,8 @@ router.post("/create", loginController.post);
 
 router.get('/cart/:id',auth, cartController.cartView);
 
+router.get('/logout', loginController.logout);
+
 
 
 module.exports = router;

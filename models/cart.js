@@ -46,10 +46,20 @@ async function insertIntoCart(user, product){
     })
 }
 
+async function innerJoinCart(username){
+    await db.query('SELECT productId FROM cart INNER JOIN products ON cart.productId = products.id where username = :username',{
+
+        replacements: {
+            username: username
+        }
+    })
+    
+}
 
 module.exports = {
     getUserById:getUserById,
     getProductById:getProductById,
     insertUserIntoCart: insertUserIntoCart,
-    insertIntoCart:insertIntoCart
+    insertIntoCart:insertIntoCart,
+    innerJoinCart:innerJoinCart
 }

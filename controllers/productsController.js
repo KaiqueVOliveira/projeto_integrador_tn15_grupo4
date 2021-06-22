@@ -7,7 +7,6 @@ const db = new Sequelize(config);
 let productsController = {
 
     viewForm: async(req, res) => {
-        let loggedUser = req.session.user;
         
         //let loggedUser = req.session.user
         const types = await typesModel.getTypes();
