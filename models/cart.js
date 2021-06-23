@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize");
 const config = require("../config/database");
-const { get } = require("./login");
 const db = new Sequelize(config);
 
 async function getUserById(username){
@@ -11,14 +10,14 @@ async function getUserById(username){
         }
     });
 
-    return result[0]
+    return result
 }
 
-async function getProductById(productId){
-    const result = await db.query('select * from cart where productId = :productId',{
+async function getProductById(username){
+    const result = await db.query('select id,productId, userName from cart where userName = :username',{
         type: Sequelize.QueryTypes.SELECT,
         replacements: {
-            productId: productId
+            username: username.username
         }
     });
 
@@ -47,13 +46,13 @@ async function insertIntoCart(user, product){
 }
 
 async function innerJoinCart(username){
-    await db.query('SELECT productId FROM cart INNER JOIN products ON cart.productId = products.id where username = :username',{
-
+    let result =  await db.query('select distinct productId from cart inner join products on cart.productId = products.id where userName = :userName',{
+        type: Sequelize.QueryTypes.SELECT,
         replacements: {
-            username: username
+            userName: username.username
         }
-    })
-    
+    });
+    return result
 }
 
 module.exports = {

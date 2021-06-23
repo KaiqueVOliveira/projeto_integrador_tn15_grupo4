@@ -6,7 +6,12 @@ const cartModel = require('../models/cart');
 function get(req, res) {
   //console.log(req.session.user)
   let loggedUser = req.session.user
-  res.render("login", {loggedUser:loggedUser, error: false , created: false, exists: false, cartError:false, productsError:false });
+  if(!loggedUser){
+    res.render("login", {loggedUser:false, error: false, created: false, exists: false, cartError:false, productsError:false });
+  }
+  else{
+    res.render("login", {loggedUser:true, error: false, created: false, exists: false, cartError:false, productsError:false });
+  }
 }
 
 function getRegister(_, res) {
@@ -19,14 +24,14 @@ async function login(req, res) {
   const user = await loginModel.get(username);
 
   if (!user) {
-    res.render("login", {checkLogin:false, error: false , created: false, exists: false, cartError:false, productsError:false });
+    res.render("login", {checkLogin:false, error: true , created: false, exists: false, cartError:false, productsError:false, loggedUser:false });
   }
   
   const comparePassword = bcrypt.compareSync(password, user.password);
 
   if (!comparePassword) {
     console.log('senha errada')
-    res.render("login", {checkLogin:false, error: false , created: false, exists: false, cartError:false, productsError:false });
+    res.render("login", {checkLogin:false, error: true , created: false, exists: false, cartError:false, productsError:false, loggedUser:false });
   }
   else {
     req.session.user = {
@@ -34,7 +39,7 @@ async function login(req, res) {
       name: user.name,
       username: user.username,
       usertype: user.usertype
-    },{checklogin:true, error: false, cartError:false, productsError:false};
+    },{checklogin:true, error: false, cartError:false, productsError:false, loggedUser:true};
     
     res.redirect("/");
   }
