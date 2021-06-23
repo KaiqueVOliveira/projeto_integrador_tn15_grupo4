@@ -1,17 +1,18 @@
 <%- include('../partials/header') %>
 <script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|s)no-js(s|$)/,"$1js$2")})(document,window,0);</script>
 
-<h1 class="d-flex justify-content-center">Cadastro de Produtos</h1>
+
+<h1 class="d-flex justify-content-center">Cadastrar novo produto</h1>
   <main class="d-flex justify-content-center">
     
-
+    <div class="container">
     <form action='' method='POST' enctype="multipart/form-data">
       <div>
-        <label for="name">Nome do produto:</label>
+        <label for="name">Nome:</label>
         <input name="name" id="name" type="text">
       </div>
       <div>
-        <label for="price">Preço do produto:</label>
+        <label for="price">Preço:</label>
         <input name="price" id="price" type="number">
       </div>
       <div>
@@ -34,7 +35,7 @@
           class="form-control"></textarea>
       </div>
       <div>
-        <label class='procurar-imagem-label' for='file'>Imagem do produto:</label><br>
+        <label class='procurar-imagem-label' for='file'>Adicione uma imagem:</label><br>
         <input type='file' name='productImg' id='productImg' class='procurar-imagem'>
             
       </div> 
@@ -42,7 +43,9 @@
         <input id='submit-button' type="submit" value="Cadastrar produto">
         <input id='cancel-button' type="reset" value="Cancelar">
       </div>
+    </div>
     </form>
   </main>
+  
 </body>
 <%- include('../partials/footer') %>
