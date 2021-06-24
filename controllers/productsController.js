@@ -8,7 +8,6 @@ let productsController = {
 
     viewForm: async(req, res) => {
         
-        //let loggedUser = req.session.user
         const types = await typesModel.getTypes();
 
         return res.render('products/register',{types:types, loggedUser: true, adminLogin:true});
@@ -78,7 +77,6 @@ let productsController = {
     deleteProducts: async (req,res) => {
         let productId = req.params.id;
         
-        //const product = await productsModel.getById(productId);
         await productsModel.deleteProduct(productId);
       
         if (req.query.json) {

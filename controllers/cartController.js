@@ -22,8 +22,6 @@ let cartController = {
                 productsArray.push(productInfo);
             }
             console.log(productsArray);
-            //const result = await db.query("select * from products;", { type: Sequelize.QueryTypes.SELECT });
-            //let products = await productsModel.getById(productId)
             console.log(loggedUser.username + ' passando pelo cart view');
             
             if(!productId){
@@ -38,30 +36,6 @@ let cartController = {
             res.render('login',{cartError:true, productsError:false, error:false, loggedUser: loggedUser});
         }
     },
-
-    /*cartView: async(req, res) => {
-        let loggedUser = req.session.user;
-        let id = loggedUser.id;
-        if(loggedUser){
-            const getUserCart = await cartModel.getUserById(loggedUser);
-            console.log(getUserCart);
-            let userCartProductId = getUserCart.productId
-            const product = await productsModel.getById(getUserCart.productId)
-
-            console.log(userCartProductId) ;
-            
-            if(!userCartProductId){
-                return res.render('user-cart',{id: id, cartError:false, productsError:false, product:product, loggedUser: true, adminLogin:true, cartProductError:false});
-            }
-
-            else{
-                return res.render('user-cart',{user: loggedUser.username, id: id, cartError:false, productsError:false, product:product, loggedUser: true, adminLogin:true,cartProductError:false});
-            }
-        }
-        else{
-            res.render('login',{cartError:true, productsError:false, error:false, loggedUser: loggedUser});
-        }
-    },*/
 
     cartInsert: async (req, res) => {
         let productId = req.params.id;

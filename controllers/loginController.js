@@ -4,7 +4,6 @@ const loginModel = require("../models/login");
 const cartModel = require('../models/cart');
 
 function get(req, res) {
-  //console.log(req.session.user)
   let loggedUser = req.session.user
   if(!loggedUser){
     res.render("login", {loggedUser:false, error: false, created: false, exists: false, cartError:false, productsError:false });
