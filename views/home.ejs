@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maddame</title>
-  <!-- Fonte -->
+   Fonte 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
-  <!-- Estilos Bootstrap -->
+  <!-- Estilos Bootstrap 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="/public/stylesheets/home.css">
-  <!-- Scripts -->
+  <link rel="stylesheet" href="/stylesheets/home.css">
+  <!-- Scripts 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -20,35 +20,13 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-  <!-- Font Awesome -->
+  <!-- Font Awesome 
   <script src="https://kit.fontawesome.com/bf7e05c402.js" crossorigin="anonymous"></script>
-  <!--Icone-->
-  <link rel="sortcut icon" href="img/faviconlogo.ico" type="image/x-icon" />
-</head>
+  <!--Icone
+  <link rel="sortcut icon" href="images/logo/faviconlogo.ico" type="image/x-icon" />
+</head> -->
+<%- include('./partials/header') %>
 
-<body>
-  <header>
-    <div class="container" id="nav-container">
-     
-      <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
-        <a class="navbar-brand" href="index.html">
-          <img id="logo" src="/public/images/logo/faviconlogo.ico" alt="Maddame"> Maddame
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
-          aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" id="home-menu" href="#">Home</span></a>
-            <a class="nav-item nav-link" id="lista-menu" href="#">Lista</a>
-            <a class="nav-item nav-link" id="cadastroPod-menu" href="#">Cadastro</a>
-            <a class="nav-item nav-link" id="cadastroPod-menu" href="#">Login</a>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
   <main>
     <div class="container-fluid">
       <!--sildes-->
@@ -60,20 +38,20 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="/public/images/banners/banner1.jpg" class="d-block w-100" alt="É Basico">
+            <img src="/images/banners/banner1.jpg" class="d-block w-100" alt="É Basico">
             <div class="carousel-caption d-md-block">
               <a href="#" class="main-btn">Login</a>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="/public/images/banners/banner2.jpg" class="d-block w-100" alt="Reduce Puffiness & Dark">
+            <img src="/images/banners/banner2.jpg" class="d-block w-100" alt="Reduce Puffiness & Dark">
             <div class="carousel-caption d-md-block">
               <a href="#" class="main-btn">Login</a>
             </div>
           </div>
 
           <div class="carousel-item">
-            <img src="/public/images/banners/banner3.png" class="d-block w-100" alt="Acabamento Perfeito">
+            <img src="/images/banners/banner3.png" class="d-block w-100" alt="Acabamento Perfeito">
             <div class="carousel-caption d-md-block">
               <a href="#" class="main-btn">Login</a>
             </div>
@@ -88,7 +66,7 @@
               <h3 class="main-title">Sobre a Maddame</h3>
             </div>
             <div class="col-md-6">
-              <img class="img-fluid" src="/public/images/logo/sobre.png" alt="Maddame">
+              <img class="img-fluid" src="/images/logo/sobre.png" alt="Maddame">
             </div>
             <div class="col-md-6">
               <h3 class="about-title">Nossa Historia</h3>
@@ -109,8 +87,10 @@
         </div>
       </div>
   </main>
+
+  <%- include('./partials/footer') %>
   <!-- Rodapé -->
-  <footer>
+  <!--<footer>
     <div id="contact-area">
       <div class="container">
         <div class="row">
@@ -145,4 +125,4 @@
   </footer>
 </body>
 
-</html>
+</html>-->

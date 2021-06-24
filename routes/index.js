@@ -9,15 +9,15 @@ router.get ('/', async function(req, res, next) {
   if(loggedUser){
     if(req.session.user.usertype == 'admin'){
       const user = await loginModel.get(loggedUser.username);
-      res.render('index', {loggedUser: true, adminLogin:true});
+      res.render('home', {loggedUser: true, adminLogin:true});
     }
     else{
       const user = await loginModel.get(loggedUser.username);
-      res.render('index', {loggedUser: true, adminLogin:false, user:loggedUser.id});
+      res.render('home', {loggedUser: true, adminLogin:false, user:loggedUser.id});
     }
   }
   else{
-    res.render('index', {loggedUser: false, adminLogin:false});
+    res.render('home', {loggedUser: false, adminLogin:false});
   } 
 });
 

@@ -1,12 +1,13 @@
 <%- include('../partials/header') %>
-<div>
+<link rel="stylesheet" type="text/css" href="/stylesheets/list.css" />
+<div id='details-div'>
   <% if (productAdded) { %>
     <span id="produto-adicionado">Produto Adicionado!</span>
   <% } %>
 </div>
 <div class="d-flex flex-row bd-highlight mb-3" >
-  <h1 class='h1'><%- products.name %></h1>
-    <div  class="p-2 bd-highlight" id='div-flex'>
+  <h1 class='h1-details'><%- products.name %></h1>
+    <div  class="details-product" id='div-flex'>
         <img 
         class="rounded-circle"
         src="/images/uploads/<%= products.img %>"

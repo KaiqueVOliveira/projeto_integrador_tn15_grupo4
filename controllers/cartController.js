@@ -25,11 +25,11 @@ let cartController = {
             console.log(loggedUser.username + ' passando pelo cart view');
             
             if(!productId){
-                return res.render('user-cart',{id: id, cartError:false, productsError:false, product:productsArray, loggedUser: true, adminLogin:true, cartProductError:false, adminLogin:false});
+                return res.render('user-cart',{id: id, cartError:false, productsError:false, product:productsArray, loggedUser: true, adminLogin:false, cartProductError:false, adminLogin:false});
             }
 
             else{
-                return res.render('user-cart',{user: loggedUser.username, id: id, cartError:false, productsError:false, product:productsArray, loggedUser: true, adminLogin:true,cartProductError:false, adminLogin:false});
+                return res.render('user-cart',{user: loggedUser.username, id: id, cartError:false, productsError:false, product:productsArray, loggedUser: true, adminLogin:false,cartProductError:false, adminLogin:false});
             }
         }
         else{
