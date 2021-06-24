@@ -1,43 +1,25 @@
-<%- include('../partials/header3') %>
-<h1 class='h1'>Lista de produtos</h1>
-<div class="d-flex flex-row bd-highlight mb-3" >
-    
+<%- include('../partials/header') %>
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/list.css" />
+<div class="d-flex flex-row bd-highlight mb-3" id="produtos">    
+
     <% products.forEach(function(product) { %>
     <div  class="p-2 bd-highlight" id='div-flex'>
-        <a href="/products/details/:id"><img 
-        class="rounded-circle"
-        src="/images/uploads/<%= product.img %>"
-        alt="imagem <%- product.name %>"
-        width="50"
-        height="50"
-        /></a>
-        <tbody>
-            <table>
-                <tr>
-                    <th><a href="/products/details/<%- product.id %>"><%- product.name %></a> </th>            
-                </tr>
-                <tr>
-                    <td>R$<%-product.price %></td>
-
-                </tr>
-                <% if(adminLogin){ %>
-                    <th>
-                        <a role="button"
-                        href="/products/edit/<%-product.id%>"
-                        class="btn btn-warning">
-                            Editar
-                        </a>
-                    </th>
-                    <th class='excluir'>
-                        <form action='/products/delete/<%-product.id%>?_method=DELETE' method='post'>
-                            <button type="submit" class="btn btn-danger">
-                                Excluir
-                            </button>
-                        <form>
-                    </th>
-                <% } %>
-            </table>
-        </tbody>
+       
+        
+        <div> 
+            <p class="product-name"><%- product.name %> <p>  
+                <a href="/products/products-description/<%= product.id %>">
+                    <img class="rounded-circle" src="/images/uploads/<%= product.img %>" alt="imagem <%- product.name %>" width="50" height="50"
+                    /></a>         
+            <p> R$<%-product.price %> </p>               
+            <a role="button" href="/products/edit/<%-product.id%>" class="btn btn-warning"> Editar </a>              
+            <tr class='excluir'>
+                   <form action='/products/delete/<%-product.id%>?_method=DELETE' method='post'>
+            <button type="submit" class="btn btn-danger"> Excluir </button> </tr> 
+         <form>                    
+        </div> 
+            
     </div>
     <% });%>
     

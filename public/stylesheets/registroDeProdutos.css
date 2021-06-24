@@ -23,8 +23,17 @@ header a:hover {
   display: flex;
 }
 
-#login-button{
-  border-left:none
+#login-button{  
+  border-color: #f4989c;
+  color: #cc2a32;
+  border-radius: 25%;
+  
+}
+
+#login-button:hover{
+  text-decoration: none;
+  background-color: rgba(238, 149, 154, 0.5);
+  font-weight: 500; 
 }
 
 #search-button {
@@ -40,25 +49,27 @@ header a:hover {
 }
 
 #submit-button {
-  border-color: #13660c;
-  color: #0d491f;
+  border-color: #f4989c;
+  color: #cc2a32;
+  border-radius: 20%; 
 }
 
 #submit-button:hover {
   text-decoration: none;
-  background-color: rgba(84, 233, 108, 0.5);
+  background-color: rgba(238, 149, 154, 0.5);
   font-weight: 500; 
 }
 
 #cancel-button {
-  border-color: #bddd06;
-  color: #413f03;
+  border-color: #f4989c;
+  color: #cc2a32;
+  border-radius: 20%; 
 }
 
 #cancel-button:hover {
   text-decoration: none;
-  background-color: rgba(241, 245, 31, 0.5);
-  font-weight: 500; 
+  background-color: rgba(238, 149, 154, 0.5);
+  font-weight: 500;  
 }
 
 #delete-button {
@@ -120,6 +131,36 @@ form div {
 div #div-flex {
   margin: 1rem 1rem 2rem 5rem;
 }
+
+#description{
+  border-color: #f4989c;
+  border-radius: 10%;   
+}
+
+#price{
+  border-color: #f4989c;
+  border-radius: 20%;
+}
+  
+#name{
+  border-color: #f4989c;
+  border-radius: 10%;
+}
+
+#productImg{
+  border-color: #f4989c;
+  border-radius: 10%;
+}
+
+.container{
+  background-color: #E8E7E7;
+  height:450px;
+  width: 50px;
+  position:relative;
+}
+
+
+
 
 /*img {
   width: 100%;
